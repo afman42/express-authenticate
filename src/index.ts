@@ -5,7 +5,7 @@ import morgan from 'morgan'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
-import { AuthRouter } from "./router"
+import { AuthRouter, ProtectedRouter } from "./router"
 
 dotenv.config()
 
@@ -25,6 +25,7 @@ app.use(
 }))
 
 app.use('/auth',AuthRouter)
+app.use('/protected',ProtectedRouter)
 
 app.listen(PORT, async () => {
   console.log(`Server running at http://localhost:${PORT}`)
