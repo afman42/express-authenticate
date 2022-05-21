@@ -29,7 +29,7 @@ export class AuthController {
         { user_id: user.id },
         process.env.JWT_SECRET)
       if (token) {
-        res.cookie('jwt', token, { maxAge: 180000, httpOnly: true })
+        res.cookie('jwt', token, { maxAge: 180000, httpOnly: true, signed: true})
         return res.json({
           message: "Successfull Login"
         })
@@ -62,8 +62,9 @@ export class AuthController {
     }
   }
 
-  async logout(_: Request, res: Response){
-    res.clearCookie('jwt')    
-    return res.sendStatus(200)
+  logout(_: Request, res: Response){
+    let s = res.cookie('jwt', "", { maxAge: 0, httpOnly: true, signed: true, expires: new Date() })
+    console.log(s)
+    return s
   }
 }
