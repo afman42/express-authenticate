@@ -16,11 +16,11 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false}))
 app.use(morgan('dev'))
 // app.use(trim)
-app.use(cookieParser())
+app.use(cookieParser('apaya'))
 app.use(
   cors({
     credentials: true,
-    origin: process.env.ORIGIN,
+    origin: true,
     optionsSuccessStatus: 200
 }))
 

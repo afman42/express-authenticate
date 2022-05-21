@@ -1,10 +1,10 @@
 import { Router} from 'express'
 import { protectedController } from '../controllers';
 import jsonWebTokenMiddleware from '../middleware/jsonwebtoken.middleware';
-// import { AuthRepository } from '../repository';
+import { ProtecRepository } from '../repository';
 
 const router = Router()
-const proteController = new protectedController()
+const proteController = new protectedController(new ProtecRepository())
 
 router.get('/',jsonWebTokenMiddleware, proteController.index.bind(proteController))
 

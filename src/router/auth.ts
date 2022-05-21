@@ -10,7 +10,7 @@ const userController = new AuthController(new AuthRepository())
 router.get('/',(req: Request, res: Response) => {
   res.send('User');
 })
-// router.post('/',userController.add.bind(userController))
+router.post('/logout',userController.logout.bind(userController))
 router.post('/register',dtoValidationMiddleware(UserRegisterDto), userController.register.bind(userController))
 router.post('/login',dtoValidationMiddleware(UserSignUpDto), userController.login.bind(userController))
 

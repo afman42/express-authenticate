@@ -15,7 +15,7 @@ function dtoValidationMiddleware(type: any, skipMissingProperties = false): Requ
           //   (Object as any).values(error.constraints)).join(", ");
             errors.reduce((prev: any, err: any) => {
                 prev[err.property] = Object.entries(err.constraints)[0][1]
-                return res.json(prev)
+                return res.status(422).json(prev)
             }, {})
 
           // next(new HttpException(400, dtoErrors));
